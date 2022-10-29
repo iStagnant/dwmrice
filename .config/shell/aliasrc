@@ -1,5 +1,5 @@
 alias \
-	ls="ls -lah" \
+	ls="ls -lah --color=auto" \
 	ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 0" \
 	ani-cli="ani-cli -fq 1080" \
 	myip="curl ipinfo.io/ip" \

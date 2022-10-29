@@ -1,4 +1,10 @@
-exec xrandr --output VGA-1 --left-of LVDS-1 &
-xrdb -merge ~/.config/X11/Xresources&
-exec slstatus &
-exec dwm
+#!/bin/sh
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/X11/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/X11/xprofile"
+else
+	. "$HOME/.xprofile"
+fi
+
+ssh-agent slstatus&
+ssh-agent dwm

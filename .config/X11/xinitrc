@@ -1,0 +1,4 @@
+exec xrandr --output VGA-1 --left-of LVDS-1 &
+xrdb -merge ~/.config/X11/Xresources&
+exec slstatus &
+exec dwm

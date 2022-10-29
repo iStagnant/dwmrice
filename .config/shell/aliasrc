@@ -1,0 +1,13 @@
+alias \
+	ls="ls -lah" \
+	ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 0" \
+	ani-cli="ani-cli -fq 1080" \
+	myip="curl ipinfo.io/ip" \
+	ports="netstat -tulanp" \
+	untar="tar -zxvf" \
+	vim="nvim" \
+	lf="lfub" \
+	efile="gpg -c --no-symkey-cache --cipher-algo AES256" \
+	estring="openssl enc -e -aes-256-cbc -base64 -pbkdf2" \
+	xclip="xclip -sel clip"
+\

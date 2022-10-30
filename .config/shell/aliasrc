@@ -11,5 +11,6 @@ alias \
 	estring="openssl enc -e -aes-256-cbc -base64 -pbkdf2" \
 	xclip="xclip -sel clip" \
 	token="cat ~/Documents/token.txt | xclip" \
-	abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook"
+	abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook" \
+	startx="startx $XINITRC"
 \

@@ -27,4 +27,4 @@ export PASSWORD_STORE_DIR=$HOME/.config/.password-store
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+#[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"

@@ -99,6 +99,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY,              		XK_n,      shiftview,  	   { .i = +1 } },
 	{ MODKEY,              		XK_b,      shiftview,      { .i = -1 } },
+	{ 0,				XK_Print,  spawn,	   SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ ShiftMask,			XK_Print,  spawn,	   {.v = (const char*[]){ "maimpick", NULL } } },
 	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenuunicode", NULL } } },
 	{ MODKEY,			XK_F10,	   spawn,	   {.v = (const char*[]){ "dmenuumount", NULL } } },
 	{ MODKEY,			XK_F9,	   spawn,	   {.v = (const char*[]){ "dmenumount", NULL } } },

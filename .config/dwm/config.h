@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
+#define SESSION_FILE "/tmp/dwm-session"
 #define TERMINAL "st"
 #define TERMCLASS "St"
 #define BROWSER "firefox"

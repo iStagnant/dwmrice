@@ -1,5 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "st"
+#define TERMCLASS "St"
+#define BROWSER "firefox"
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -59,19 +64,23 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
 //volume controls
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *lf[] = { "st", "lfub", NULL };
 
 #include "shiftview.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,	                XK_r, 	   spawn,          {.v = lf } },
+	{ MODKEY,			XK_w,	   spawn,	   {.v = (const char*[]){ BROWSER, NULL } } },
+	{ MODKEY|ShiftMask,		XK_w,	   spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
+	{ MODKEY,			XK_e,	   spawn,	   SHCMD(TERMINAL " -e neomutt") },
+	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   SHCMD(TERMINAL " -e abook --config ~/.config/abook/abookrc --datafile ~/.local/share/abook/addressbook") },
+	{ MODKEY,			XK_r,	   spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
+	{ MODKEY|ShiftMask,		XK_r,	   spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,                       XK_t,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

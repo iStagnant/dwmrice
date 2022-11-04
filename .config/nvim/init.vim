@@ -12,6 +12,7 @@ imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
+Plug 'lervag/vimtex'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
@@ -62,7 +63,14 @@ set noshowcmd
     endif
 
 " Airline
-let g:airline_powerline_fonts = 1
+	let g:airline_powerline_fonts = 1
+	let g:airline#extensions#vimtex#enabled = 1
+  	let g:airline#extensions#vimtex#compiled = "c₁"
+  	let g:airline#extensions#vimtex#continuous = "c"
+  	let g:airline#extensions#vimtex#viewer = "v"
+
+" Vimtex
+	let g:vimtex_view_method = 'zathura'
 
 " vimling:
 	nm <leader>d :call ToggleDeadKeys()<CR>

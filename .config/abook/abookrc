@@ -1,0 +1,4 @@
+set autosave=true
+set show_all_emails=true
+set mutt_command=neomutt
+set index_format={name:22} {email:40} {mobile:12|workphone|phone}

@@ -26,5 +26,3 @@ export MBSYNCRC="$XDG_CONFIG_HOME/isync/mbsyncrc"
 
 # Other program settings
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-
-# Start graphical server on user's current tty if not already running.

@@ -103,7 +103,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
@@ -112,11 +111,13 @@ static Key keys[] = {
 	{ 0,				XK_Print,  spawn,	   SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,			XK_Print,  spawn,	   {.v = (const char*[]){ "maimpick", NULL } } },
 	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenuunicode", NULL } } },
-	{ MODKEY,			XK_F10,	   spawn,	   {.v = (const char*[]){ "dmenuumount", NULL } } },
-	{ MODKEY,			XK_F9,	   spawn,	   {.v = (const char*[]){ "dmenumount", NULL } } },
-	{ MODKEY,                       XK_F8,     spawn,          {.v = upvol   } },
-    	{ MODKEY,                       XK_F7,     spawn,          {.v = downvol } },
+	{ MODKEY,			XK_F3,	   spawn,	   {.v = (const char*[]){ "displayselect", NULL } } },
+	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
     	{ MODKEY,                       XK_F6,     spawn,          {.v = mutevol } },
+    	{ MODKEY,                       XK_F7,     spawn,          {.v = downvol } },
+	{ MODKEY,                       XK_F8,     spawn,          {.v = upvol   } },
+	{ MODKEY,			XK_F9,	   spawn,	   {.v = (const char*[]){ "dmenumount", NULL } } },
+	{ MODKEY,			XK_F10,	   spawn,	   {.v = (const char*[]){ "dmenuumount", NULL } } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

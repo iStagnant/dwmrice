@@ -22,6 +22,7 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export ZDOTDIR=$HOME/.config/zsh
 export PASSWORD_STORE_DIR=$HOME/.config/.password-store
+export MBSYNCRC="$XDG_CONFIG_HOME/isync/mbsyncrc"
 
 # Other program settings
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

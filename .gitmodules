@@ -4,3 +4,4 @@
 [submodule ".config/dmenu"]
 	path = .config/dmenu
 	url = https://github.com/lukesmithxyz/dmenu
+	ignore = dirty

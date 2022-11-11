@@ -66,10 +66,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
-//volume controls
-static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 
 #include "shiftview.c"
 static Key keys[] = {
@@ -113,9 +109,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenuunicode", NULL } } },
 	{ MODKEY,			XK_F3,	   spawn,	   {.v = (const char*[]){ "displayselect", NULL } } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
-    	{ MODKEY,                       XK_F6,     spawn,          {.v = mutevol } },
-    	{ MODKEY,                       XK_F7,     spawn,          {.v = downvol } },
-	{ MODKEY,                       XK_F8,     spawn,          {.v = upvol   } },
+    	{ MODKEY,                       XK_F6,     spawn,          SHCMD("pamixer -t") },
+    	{ MODKEY,                       XK_F7,     spawn,          SHCMD("pamixer --allow-boost -d 5") },
+	{ MODKEY,                       XK_F8,     spawn,          SHCMD("pamixer --allow-boost -i 5") },
 	{ MODKEY,			XK_F9,	   spawn,	   {.v = (const char*[]){ "dmenumount", NULL } } },
 	{ MODKEY,			XK_F10,	   spawn,	   {.v = (const char*[]){ "dmenuumount", NULL } } },
 	TAGKEYS(                        XK_1,                      0)

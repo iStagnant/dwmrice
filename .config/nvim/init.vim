@@ -12,7 +12,6 @@ imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
-Plug 'lervag/vimtex'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
@@ -20,6 +19,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
+Plug 'lervag/vimtex'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 set title
@@ -68,6 +69,9 @@ set noshowcmd
   	let g:airline#extensions#vimtex#compiled = "c₁"
   	let g:airline#extensions#vimtex#continuous = "c"
   	let g:airline#extensions#vimtex#viewer = "v"
+
+" Coc-pyright
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 
 " Vimtex
 	let g:vimtex_view_method = 'zathura'

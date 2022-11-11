@@ -5,7 +5,7 @@
 xrandr --output VGA-1 --left-of LVDS-1 &
 xrandr --dpi 96		# Set DPI. User may want to use a larger number for larger screens.
 xinput --map-to-output '12' LVDS-1 && xinput --map-to-output '17' LVDS-1 #Calibrating touchscreen
-setbg &			# set the background with the `setbg` script
+setbg &&		# set the background with the `setbg` script
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/X11/Xresources & xrdbpid=$!
 
 autostart="dunst"

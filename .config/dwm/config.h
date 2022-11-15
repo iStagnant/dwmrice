@@ -109,9 +109,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenuunicode", NULL } } },
 	{ MODKEY,			XK_F3,	   spawn,	   {.v = (const char*[]){ "displayselect", NULL } } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
-    	{ MODKEY,                       XK_F6,     spawn,          SHCMD("pamixer -t") },
-    	{ MODKEY,                       XK_F7,     spawn,          SHCMD("pamixer --allow-boost -d 5") },
-	{ MODKEY,                       XK_F8,     spawn,          SHCMD("pamixer --allow-boost -i 5") },
+    	{ MODKEY,                       XK_F6,     spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+    	{ MODKEY,                       XK_F7,     spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ MODKEY,                       XK_F8,     spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ MODKEY,			XK_F9,	   spawn,	   {.v = (const char*[]){ "dmenumount", NULL } } },
 	{ MODKEY,			XK_F10,	   spawn,	   {.v = (const char*[]){ "dmenuumount", NULL } } },
 	TAGKEYS(                        XK_1,                      0)

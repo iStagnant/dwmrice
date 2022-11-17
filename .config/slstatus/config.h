@@ -64,8 +64,9 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function format          argument */
 	//{ datetime, "%s",           "%F %T" },
-	//{ wifi_perc, "W: (%3s%% on ", "wlp8s0" },
-    //{ netspeed_rx, "%sB/s  ", "enp0s3" },
+	//{ wifi_perc, "W:%3s%% ", "wlan0" },
+    	//{ netspeed_rx, "%sB/s  ", "wlan0" },
+	//{battery_perc, " %4s%% ", "BAT0" },
 	{ run_command, ": %4s | ", "pamixer --get-volume-human" },
 	{ cpu_perc, "[CPU  %s%%]   ", NULL	      },
 	{ ram_perc, "[RAM  %s%%]   ", NULL	      },

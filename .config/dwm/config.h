@@ -68,6 +68,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { TERMINAL, NULL };
 
 #include "shiftview.c"
+#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
@@ -106,6 +107,8 @@ static Key keys[] = {
 	{ MODKEY,              		XK_b,      shiftview,      { .i = -1 } },
 	{ 0,				XK_Print,  spawn,	   SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,			XK_Print,  spawn,	   {.v = (const char*[]){ "maimpick", NULL } } },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,			   {.v = (const char*[]){ "light", "-A", "15", NULL } } },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,			   {.v = (const char*[]){ "light", "-U", "15", NULL } } },
 	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenuunicode", NULL } } },
 	{ MODKEY,			XK_F3,	   spawn,	   {.v = (const char*[]){ "displayselect", NULL } } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },

@@ -20,14 +20,14 @@ case "$(file --mime-type -b "$trueloc")" in
 	*) notify-send "🖼️ Error" "Not a valid image or directory." ; exit 1;;
 esac
 
-# If pywal is installed, use it.
-if command -v wal >/dev/null 2>&1 ; then
-	wal -n -i "$(readlink -f $bgloc)" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
-# If pywal is removed, return config files to normal.
-else
-	[ -f "$dunstconf.bak" ] && unlink "$dunstconf" && mv "$dunstconf.bak" "$dunstconf"
-	[ -f "$zathuraconf.bak" ] && unlink "$zathuraconf" && mv "$zathuraconf.bak" "$zathuraconf"
-fi
+# # If pywal is installed, use it.
+# if command -v wal >/dev/null 2>&1 ; then
+# 	wal -n -i "$(readlink -f $bgloc)" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+# # If pywal is removed, return config files to normal.
+# else
+# 	[ -f "$dunstconf.bak" ] && unlink "$dunstconf" && mv "$dunstconf.bak" "$dunstconf"
+# 	[ -f "$zathuraconf.bak" ] && unlink "$zathuraconf" && mv "$zathuraconf.bak" "$zathuraconf"
+# fi
 
 xwallpaper --zoom "$bgloc"
 # If running, dwm hit the key to refresh the color scheme.

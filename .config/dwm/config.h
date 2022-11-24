@@ -71,62 +71,118 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 #include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,			XK_w,	   spawn,	   {.v = (const char*[]){ BROWSER, NULL } } },
-	{ MODKEY|ShiftMask,		XK_w,	   spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
-	{ MODKEY,			XK_e,	   spawn,	   SHCMD(TERMINAL " -e neomutt") },
-	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   SHCMD(TERMINAL " -e abook --config ~/.config/abook/abookrc --datafile ~/.local/share/abook/addressbook") },
-	{ MODKEY,			XK_r,	   spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
-	{ MODKEY|ShiftMask,		XK_r,	   spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
-	{ MODKEY,                       XK_t,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_z, 	   zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             		XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	{ MODKEY,              		XK_n,      shiftview,  	   { .i = +1 } },
-	{ MODKEY,              		XK_b,      shiftview,      { .i = -1 } },
-	{ 0,				XK_Print,  spawn,	   SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-	{ ShiftMask,			XK_Print,  spawn,	   {.v = (const char*[]){ "maimpick", NULL } } },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,			   {.v = (const char*[]){ "light", "-A", "15", NULL } } },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,			   {.v = (const char*[]){ "light", "-U", "15", NULL } } },
-	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenuunicode", NULL } } },
-	{ MODKEY,			XK_F3,	   spawn,	   {.v = (const char*[]){ "displayselect", NULL } } },
-	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
-    	{ MODKEY,                       XK_F6,     spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
-    	{ MODKEY,                       XK_F7,     spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
-	{ MODKEY,                       XK_F8,     spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ MODKEY,			XK_F9,	   spawn,	   {.v = (const char*[]){ "dmenumount", NULL } } },
-	{ MODKEY,			XK_F10,	   spawn,	   {.v = (const char*[]){ "dmenuumount", NULL } } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,		XK_q,	   spawn,	   {.v = (const char*[]){ "sysact", NULL } } },
+	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_grave,	spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
+	/* { MODKEY|ShiftMask,		XK_grave,	spawn,		SHCMD("") }, */
+	TAGKEYS(                        XK_1,		0)
+	TAGKEYS(                        XK_2,		1)
+	TAGKEYS(                        XK_3,		2)
+	TAGKEYS(                        XK_4,		3)
+	TAGKEYS(                        XK_5,		4)
+	TAGKEYS(                        XK_6,		5)
+	TAGKEYS(                        XK_7,		6)
+	TAGKEYS(                        XK_8,		7)
+	TAGKEYS(                        XK_9,		8)
+	{ MODKEY,                       XK_0,		view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,		tag,            {.ui = ~0 } },
+	{ MODKEY,			XK_minus,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%-") },
+	{ MODKEY,			XK_equal,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+") },
+	/* { MODKEY,			XK_BackSpace,	spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("") }, */
+
+	{ MODKEY,                       XK_Tab,		view,           {0} },
+	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
+	{ MODKEY,             		XK_q,		killclient,     {0} },
+	{ MODKEY|ShiftMask,		XK_q,		spawn,		{.v = (const char*[]){ "sysact", NULL } } },
+	{ MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
+	{ MODKEY|ShiftMask,		XK_w,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
+	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt") },
+	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook --config ~/.config/abook/abookrc --datafile ~/.local/share/abook/addressbook") },
+	{ MODKEY,			XK_r,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
+	{ MODKEY|ShiftMask,		XK_r,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
+	{ MODKEY,                       XK_t,		togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_t,		setlayout,      {.v = &layouts[0]} }, /* tile */
+	/* { MODKEY,			XK_y,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_y,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_u,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_u,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_i,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_i,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_o,		incnmaster,	{.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_o,		incnmaster,	{.i = -1 } },
+	/* { MODKEY,			XK_p,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_bracketleft,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_bracketright,	spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_backslash,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
+
+	/* { MODKEY,			XK_a,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_a,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_s,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
+	{ MODKEY,                       XK_d,		spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,		XK_d,		spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
+	/* { MODKEY,			XK_f,		spawn,		SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_f,		setlayout,      {.v = &layouts[1]} }, /* free */
+	/* { MODKEY,			XK_g,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_g,		spawn,		SHCMD("") }, */
+	{ MODKEY,                       XK_h,		setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_j,		focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,		focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_l,		setmfact,       {.f = +0.05} },
+	/* { MODKEY,			XK_semicolon,	spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_apostrophe,	spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
+	{ MODKEY,             		XK_Return,	spawn,          {.v = termcmd } },
+	/* { MODKEY|ShiftMask,		XK_Return,	spawn,		SHCMD("") }, */
+
+	/* { MODKEY,			XK_z,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_x,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
+	{ MODKEY,                       XK_v,		focusstack,     {.i = 0 } },
+	{ MODKEY,              		XK_b,		shiftview,      { .i = -1 } },
+	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
+	{ MODKEY,              		XK_n,		shiftview,	{ .i = +1 } },
+	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat") },
+	/* { MODKEY,			XK_m,		spawn,		SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_m,		setlayout,      {.v = &layouts[2]} }, /* monocle */
+	{ MODKEY,                       XK_comma,  	focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  	tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_period, 	focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         {.i = +1 } },
+
+	/* { MODKEY,			XK_F1,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_F2,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_F3,		spawn,		{.v = (const char*[]){ "displayselect", NULL } } },
+	{ MODKEY,			XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer") },
+	{ MODKEY,                       XK_F5,     	xrdb,           {.v = NULL } },
+	/* { MODKEY,			XK_F6,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_F7,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_F8,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_F9,	   	spawn,		{.v = (const char*[]){ "dmenumount", NULL } } },
+	{ MODKEY,			XK_F10,	   	spawn,		{.v = (const char*[]){ "dmenuumount", NULL } } },
+	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
+	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_space,	zoom,		{0} },
+	{ MODKEY|ShiftMask,             XK_space,  	togglefloating, {0} },
+
+	{ 0,				XK_Print,  	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ ShiftMask,			XK_Print,  	spawn,		{.v = (const char*[]){ "maimpick", NULL } } },
+
+	{ 0, XF86XK_AudioMute,		spawn,				SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle)") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,				SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,				SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,				{.v = (const char*[]){ "light", "-A", "15", NULL } } },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,			   	{.v = (const char*[]){ "light", "-U", "15", NULL } } },
 };
 
 /* button definitions */

@@ -41,7 +41,6 @@ A,ani-cli
 ,htop
 ,imagemagick
 ,imlib2
-,inxi
 ,keepassxc
 A,lf-git
 ,libnotify
@@ -50,8 +49,6 @@ A,lf-git
 ,libxft
 ,libxinerama
 A,light-git
-,linux
-,linux-firmware
 ,lynx
 ,maim
 ,make

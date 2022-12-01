@@ -48,11 +48,11 @@ installationloop
 
 # Moving github files to their places
 parentdir="$(dirname $(dirname $(pwd)))"
-[ -d $HOME/.config ] && rm -rf $HOME/.config
-[ -d $HOME/.local ] && rm -rf $HOME/.local
-sudo -u "$USER" cp -r "$parentdir/*" "$HOME"
-[ -d $HOME/.config ] && cd $HOME/.config/dwm && sudo make clean install && cd ../st && sudo make clean install && cd ../slstatus && sudo make clean install && cd ../slock && sudo make clean install
+[ -d /home/$USER/.config ] && rm -rf /home/$USER/.config
+[ -d /home/$USER/.local ] && rm -rf /home/$USER/.local
+sudo -u "$USER" cp -r "$parentdir/.*" "/home/$USER"
+[ -d /home/$USER/.config ] && cd /home/$USER/.config/dwm && sudo make clean install && cd ../st && sudo make clean install && cd ../slstatus && sudo make clean install && cd ../slock && sudo make clean install
 
 # Make zsh the default shell for the user.
 chsh -s /bin/zsh "$USER" >/dev/null 2>&1
-sudo -u "$USER" mkdir -p "$HOME/.cache/zsh/"
+sudo -u "$USER" mkdir -p "/home/$USER/.cache/zsh/"

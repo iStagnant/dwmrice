@@ -20,6 +20,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'lervag/vimtex'
+Plug 'kassio/neoterm'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
 set title
@@ -72,12 +75,41 @@ set noshowcmd
 " Vimtex
 	let g:vimtex_view_method = 'zathura'
 
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
+" Neoterm
+	let g:neoterm_default_mod = 'horizontal'
+	let g:neoterm_size = 10
+	let g:neoterm_autoinsert = 1
+	let g:neoterm_autoscroll = 1
+	nnoremap <c-t> :Ttoggle<CR>
+	inoremap <c-t> <Esc>:Ttoggle<CR>
+	tnoremap <c-t> <c-\><c-n>:Ttoggle<CR>
+
+" Lspconfig
+	lua require'lspconfig'.clangd.setup{}
+	nnoremap <silent> gd	<cmd>lua vim.lsp.buf.definition()<CR>
+	nnoremap <silent> gh	<cmd>lua vim.lsp.buf.hover()<CR>
+	nnoremap <silent> gH	<cmd>:Telescope lsp_code_actions<CR>
+	nnoremap <silent> gD	<cmd>lua vim.lsp.buf.implementation()<CR>
+	nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+	nnoremap <silent> gr	<cmd>lua vim.lsp.buf.references()<CR>
+	nnoremap <silent> gR	<cmd>lua vim.lsp.buf.rename()<CR>
+
+" Compe
+	lua << EOF
+	require'compe'.setup {
+	  enabled = true;
+	  autocomplete = true;
+	  source = {
+	    path = true;
+	    buffer = true;
+	    nvim_lsp = true;
+	    nvim_lua = true;
+	    -- treesitter = true;
+	  };
+	}
+EOF
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -90,10 +122,6 @@ set noshowcmd
 
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck -x %<CR>
-
-" Open my bibliography file in split
-	map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>

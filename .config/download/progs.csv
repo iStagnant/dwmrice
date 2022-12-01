@@ -27,6 +27,7 @@ A,ani-cli
 ,firefox
 ,flex
 ,fzf
+,clang
 ,gawk
 ,gcc
 ,gettext
@@ -128,6 +129,7 @@ A,task-spooler
 ,xorg-xinput
 ,xwallpaper
 P,pywal
+P,neovim
 ,youtube-dl
 A,youtube-viewer
 ,yt-dlp

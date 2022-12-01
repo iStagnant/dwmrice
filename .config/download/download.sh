@@ -51,6 +51,7 @@ parentdir="$(dirname $(dirname $(pwd)))"
 [ -d $HOME/.config ] && rm -rf $HOME/.config
 [ -d $HOME/.local ] && rm -rf $HOME/.local
 sudo -u "$USER" cp -r "$parentdir/*" "$HOME"
+[ -d $HOME/.config ] && cd $HOME/.config/dwm && sudo make clean install && cd ../st && sudo make clean install && cd ../slstatus && sudo make clean install && cd ../slock && sudo make clean install
 
 # Make zsh the default shell for the user.
 chsh -s /bin/zsh "$USER" >/dev/null 2>&1

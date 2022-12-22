@@ -5,3 +5,6 @@
 	path = .config/dmenu
 	url = https://github.com/lukesmithxyz/dmenu
 	ignore = dirty
+[submodule ".config/mpv/scripts/mpv-reload"]
+	path = .config/mpv/scripts/mpv-reload
+	url = https://github.com/4e6/mpv-reload

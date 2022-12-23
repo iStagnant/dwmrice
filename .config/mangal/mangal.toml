@@ -22,7 +22,7 @@ stop_on_error = false
 
 [formats]
 skip_unsupported_images = true
-use = 'plain'
+use = 'cbz'
 
 [gen]
 author = ''

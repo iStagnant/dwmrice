@@ -56,3 +56,6 @@ sudo -u "$USER" cp -r "$parentdir/.*" "/home/$USER"
 # Make zsh the default shell for the user.
 chsh -s /bin/zsh "$USER" >/dev/null 2>&1
 sudo -u "$USER" mkdir -p "/home/$USER/.cache/zsh/"
+
+# Generating completion script for mangal
+mangal completion zsh > /usr/share/zsh/site-functions/_mangal

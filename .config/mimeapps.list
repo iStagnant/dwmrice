@@ -1,0 +1,5 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+application/png=sxiv.desktop
+application/jpg=sxiv.desktop
+application/jpeg=sxiv.desktop

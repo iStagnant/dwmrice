@@ -10,7 +10,6 @@ mn="cd /mnt && ls -a" \
 pp="cd /home/elias/Pictures && ls -a" \
 sc="cd /home/elias/.local/bin && ls -a" \
 src="cd /home/elias/.local/src && ls -a" \
-vv="cd /home/elias/Videos && ls -a" \
 bf="$EDITOR /home/elias/.config/shell/bm-files" \
 bd="$EDITOR /home/elias/.config/shell/bm-dirs" \
 cfx="$EDITOR /home/elias/.config/X11/Xresources" \

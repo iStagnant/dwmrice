@@ -9,7 +9,6 @@ cmap ;mn /mnt
 cmap ;pp /home/elias/Pictures
 cmap ;sc /home/elias/.local/bin
 cmap ;src /home/elias/.local/src
-cmap ;vv /home/elias/Videos
 cmap ;bf /home/elias/.config/shell/bm-files
 cmap ;bd /home/elias/.config/shell/bm-dirs
 cmap ;cfx /home/elias/.config/X11/Xresources

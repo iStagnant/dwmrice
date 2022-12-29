@@ -9,7 +9,6 @@ hash -d mn=/mnt
 hash -d pp=/home/elias/Pictures 
 hash -d sc=/home/elias/.local/bin 
 hash -d src=/home/elias/.local/src 
-hash -d vv=/home/elias/Videos 
 hash -d bf=/home/elias/.config/shell/bm-files 
 hash -d bd=/home/elias/.config/shell/bm-dirs 
 hash -d cfx=/home/elias/.config/X11/Xresources 

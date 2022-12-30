@@ -84,9 +84,6 @@ if is_bootstrap then
   return
 end
 
--- Load keymap
-require('elias.keymaps')
-
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
@@ -107,7 +104,6 @@ vim.wo.relativenumber = true
 
 -- Splits open at the bottom and right of current buffer
 vim.o.splitbelow = true
-vim.o.splitright = true
 
 -- Making tabs 4 spaces
 vim.o.tabstop = 4
@@ -350,11 +346,8 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
   -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  clangd = {},
 
   sumneko_lua = {
     Lua = {
@@ -366,7 +359,7 @@ local servers = {
 
 -- Setup neovim lua configuration
 require('neodev').setup()
---
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -451,6 +444,9 @@ vim.api.nvim_create_autocmd(
 -- Load command shortcuts generated from bm-dirs and bm-files via shortcuts script.
 -- Here leader is ";".
 vim.cmd("source ~/.config/nvim/shortcuts.vim")
+
+-- Load keymap
+require('custom.keymaps')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

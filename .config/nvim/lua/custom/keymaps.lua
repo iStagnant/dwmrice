@@ -19,7 +19,9 @@ map('i', '<c-t>', '<Esc>:Ttoggle<CR>')
 map('t', '<c-t>', '<c-\\><c-n>:Ttoggle<CR>')
 
 -- Spell-check keymap
-vim.keymap.set({'n','v'}, '<leader>o', ':setlocal spell! spelllang=en_us<CR>')
+vim.keymap.set('n', '<leader>o', function()
+	vim.o.spell = not vim.o.spell
+end)
 
 -- Preform dot commands over visual blocks
 vim.keymap.set('v', '.', ':normal .<CR>')
@@ -35,3 +37,6 @@ vim.keymap.set('n', '<leader>p', ':!opout "%:p"<CR>')
 
 -- Save file as sudo on files that require root permissions
 vim.keymap.set('c', 'w!!', 'execute ":silent! write !sudo tee % >/dev/null" | edit!<CR>')
+
+-- Open File explorer in vim
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)

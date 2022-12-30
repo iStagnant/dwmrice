@@ -12,7 +12,7 @@ cmap ;src /home/elias/.local/src
 cmap ;bf /home/elias/.config/shell/bm-files
 cmap ;bd /home/elias/.config/shell/bm-dirs
 cmap ;cfx /home/elias/.config/X11/Xresources
-cmap ;cfv /home/elias/.config/nvim/init.vim
+cmap ;cfv /home/elias/.config/nvim/init.lua
 cmap ;cfz /home/elias/.config/zsh/.zshrc
 cmap ;cfa /home/elias/.config/shell/aliasrc
 cmap ;cfp /home/elias/.config/shell/profile

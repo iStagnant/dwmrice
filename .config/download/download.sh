@@ -53,6 +53,9 @@ parentdir="$(dirname $(dirname $(pwd)))"
 sudo -u "$USER" cp -r "$parentdir/.*" "/home/$USER"
 [ -d /home/$USER/.config ] && cd /home/$USER/.config/dwm && sudo make clean install && cd ../st && sudo make clean install && cd ../slstatus && sudo make clean install && cd ../slock && sudo make clean install
 
+# Making sure that abook has a storage directory
+[ -d /home/$USER/.local/share/abook ] || sudo -u "$USER" mkdir -p "/home/$USER/.local/share/abook"
+
 # Make zsh the default shell for the user.
 chsh -s /bin/zsh "$USER" >/dev/null 2>&1
 sudo -u "$USER" mkdir -p "/home/$USER/.cache/zsh/"

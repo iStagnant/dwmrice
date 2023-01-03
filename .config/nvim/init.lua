@@ -43,6 +43,13 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
+    -- DAP for debugging
+  use {
+    'rcarriga/nvim-dap-ui',
+    requires = {'mfussenegger/nvim-dap'}
+  }
+  use 'theHamsta/nvim-dap-virtual-text'
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
@@ -348,6 +355,7 @@ end
 local servers = {
   -- pyright = {},
   clangd = {},
+  ltex = {},
 
   sumneko_lua = {
     Lua = {

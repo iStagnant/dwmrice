@@ -1,0 +1,11 @@
+#!/bin/sh
+
+rundir="/run/runit/service"
+svdir="/etc/runit/sv"
+
+if [ -d "$rundir/$1" ]
+then
+    sudo rm "$rundir/$1"
+else
+    sudo ln -s "$svdir/$1" "$rundir"
+fi

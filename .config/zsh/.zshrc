@@ -7,7 +7,6 @@ setopt interactive_comments
 # Additional Options
 setopt correct
 setopt nocheckjobs
-setopt autocd
 setopt inc_append_history
 
 # History in cache directory:

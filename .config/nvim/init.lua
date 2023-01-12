@@ -217,6 +217,12 @@ require('telescope').setup {
       },
     },
   },
+
+  pickers = {
+    find_files = {
+      hidden = true
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
@@ -369,6 +375,13 @@ local servers = {
     },
   },
 }
+
+-- this is for diagnositcs signs on the line number column
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+end
 
 -- Setup neovim lua configuration
 require('neodev').setup()

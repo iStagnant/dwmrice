@@ -40,3 +40,7 @@ vim.keymap.set('c', 'w!!', 'execute ":silent! write !sudo tee % >/dev/null" | ed
 
 -- Open File explorer in vim
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+
+-- To have screen centered when i jump half a page
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')

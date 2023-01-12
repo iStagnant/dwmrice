@@ -109,6 +109,12 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- Disable automatic commenting on newline
+vim.bo.formatoptions = "jql"
+
+-- Copy and paste to system clipboard
+vim.o.clipboard = "unnamedplus"
+
 -- Splits open at the bottom and right of current buffer
 vim.o.splitbelow = true
 

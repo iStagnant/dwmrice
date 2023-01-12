@@ -32,9 +32,6 @@ vim.keymap.set('n', 'S', ':%s//g<left><left>')
 -- Compile text using the compiler bash-script
 vim.keymap.set('n', '<leader>c', ':w! | !compiler "%:p"<CR>')
 
--- Open corresponding .pdf/.html or preview
-vim.keymap.set('n', '<leader>p', ':!opout "%:p"<CR>')
-
 -- Save file as sudo on files that require root permissions
 vim.keymap.set('c', 'w!!', 'execute ":silent! write !sudo tee % >/dev/null" | edit!<CR>')
 

@@ -67,6 +67,9 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  -- For loading nvim faster
+  use 'lewis6991/impatient.nvim'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -91,6 +94,9 @@ if is_bootstrap then
   return
 end
 
+-- Starting impatient.nvim
+require('impatient')
+
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
@@ -110,7 +116,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Disable automatic commenting on newline
-vim.bo.formatoptions = "jql"
+vim.o.formatoptions = "jql"
 
 -- Copy and paste to system clipboard
 vim.o.clipboard = "unnamedplus"

@@ -3,4 +3,8 @@ return function(use)
 	use 'ThePrimeagen/vim-be-good'
 	use 'windwp/nvim-autopairs'
 	use 'frabjous/knap'
+	use {
+		'michaelb/sniprun',
+		run = 'bash install.sh'
+	}
 end

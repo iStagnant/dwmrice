@@ -62,3 +62,7 @@ sudo -u "$USER" mkdir -p "/home/$USER/.cache/zsh/"
 
 # Generating completion script for mangal
 mangal completion zsh > /usr/share/zsh/site-functions/_mangal
+
+# Making neomutt work with my abook configuration
+sed -Ei "s/set query_command =.*/set query_command = \"abook --config ~\/.config\/abook\/abookrc --datafile ~\/.local\/share\/abook\/addressbook --mutt-query '%s'\"/" /usr/share/mutt-wizard/mutt-wizard.muttrc
+sed -Ei "s/abook --add-email/abook --config ~\/.config\/abook\/abookrc --datafile ~\/.local\/share\/abook\/addressbook --add-email/" /usr/share/mutt-wizard/mutt-wizard.muttrc

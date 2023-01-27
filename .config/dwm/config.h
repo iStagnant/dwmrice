@@ -114,7 +114,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_i,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_o,		incnmaster,	{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_o,		incnmaster,	{.i = -1 } },
-	/* { MODKEY,			XK_p,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_p,		spawn,		{.v = (const char*[]){ "keepassxc", NULL }} },
 	/* { MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_bracketleft,	spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_bracketleft,	spawn,		SHCMD("") }, */

@@ -130,7 +130,7 @@ A,task-spooler
 P,pywal
 P,neovim
 ,youtube-dl
-A,youtube-viewer
+,ytfzf
 ,yt-dlp
 ,zathura
 ,zathura-djvu
@@ -142,3 +142,4 @@ A,tllocalmgr
 A,mangal
 ,git-delta
 ,moreutils
+,ttf-dejavu

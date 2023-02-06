@@ -170,8 +170,8 @@ static Key keys[] = {
 	/* { MODKEY,			XK_F6,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_F7,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_F8,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_F9,	   	spawn,		{.v = (const char*[]){ "dmenumount", NULL } } },
-	{ MODKEY,			XK_F10,	   	spawn,		{.v = (const char*[]){ "dmenuumount", NULL } } },
+	{ MODKEY,			XK_F9,	   	spawn,		{.v = (const char*[]){ "mounter", NULL } } },
+	{ MODKEY,			XK_F10,	   	spawn,		{.v = (const char*[]){ "unmounter", NULL } } },
 	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_space,	zoom,		{0} },

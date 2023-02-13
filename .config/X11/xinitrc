@@ -6,5 +6,4 @@ else
 	. "$HOME/.xprofile"
 fi
 
-ssh-agent slstatus&
 ssh-agent dwm

@@ -475,7 +475,7 @@ vim.api.nvim_create_autocmd(
 
 -- Load command shortcuts generated from bm-dirs and bm-files via shortcuts script.
 -- Here leader is ";".
-vim.cmd("source ~/.config/nvim/shortcuts.vim")
+vim.cmd("silent! source ~/.config/nvim/shortcuts.vim")
 vim.g.neoterm_automap_keys = '<NOP>'
 
 -- Load keymap

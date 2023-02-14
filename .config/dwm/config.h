@@ -172,7 +172,7 @@ static Key keys[] = {
 	/* { MODKEY,			XK_F8,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_F9,	   	spawn,		{.v = (const char*[]){ "mounter", NULL } } },
 	{ MODKEY,			XK_F10,	   	spawn,		{.v = (const char*[]){ "unmounter", NULL } } },
-	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_F11,		spawn,		{.v = (const char*[]){ "dmenubluetooth", NULL } } },
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,             XK_space,  	togglefloating, {0} },

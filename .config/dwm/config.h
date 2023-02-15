@@ -154,7 +154,7 @@ static Key keys[] = {
 	{ MODKEY,              		XK_b,		shiftview,      { .i = -1 } },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	{ MODKEY,              		XK_n,		shiftview,	{ .i = +1 } },
-	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat") },
+	/* { MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_m,		spawn,		SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_m,		setlayout,      {.v = &layouts[2]} }, /* monocle */
 	{ MODKEY,                       XK_comma,  	focusmon,       {.i = -1 } },

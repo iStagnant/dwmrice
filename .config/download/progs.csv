@@ -12,6 +12,7 @@ A,ani-cli
 ,binutils
 ,breeze-icons
 ,cronie
+,cronie-runit
 ,cups
 ,cups-pdf
 ,cups-runit

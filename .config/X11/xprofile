@@ -8,7 +8,7 @@ xinput --map-to-output '12' LVDS-1 && xinput --map-to-output '17' LVDS-1 #Calibr
 setbg &&		# set the background with the `setbg` script
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/X11/Xresources & xrdbpid=$!
 
-autostart="dunst pipewire"
+autostart="xcompmgr dunst pipewire"
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &

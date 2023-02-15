@@ -3,9 +3,18 @@
 rundir="/run/runit/service"
 svdir="/etc/runit/sv"
 
-if [ -d "$rundir/$1" ]
-then
-    sudo rm "$rundir/$1"
-else
-    sudo ln -s "$svdir/$1" "$rundir"
-fi
+cd "$svdir"
+result=$(
+    for service in *; do
+        printf '%-25s linked: %s\n' "$service" $([ -d "$rundir/$service" ] && echo yes || echo no)
+    done | dmenu -l 10
+) || exit 1
+
+service=$(echo "$result" | awk '{print $1}')
+case $result in
+    *yes)
+        sudo -A rm "$rundir/$service"
+        ;;
+    *no)
+        sudo -A ln -s "$svdir/$service" "$rundir/"
+esac

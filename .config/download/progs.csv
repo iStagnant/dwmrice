@@ -144,3 +144,7 @@ A,mangal
 ,moreutils
 ,ttf-dejavu
 A,bicon-git
+,bluez
+,bluez-utils
+,bluez-runit
+,xcompmgr

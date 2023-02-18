@@ -12,7 +12,10 @@ for command in mount umount sv ufw shutdown poweroff reboot ; do
 done; unset command
 
 # Open bin scripts
-se() { cd ~/.local/bin; $EDITOR $(fzf) ;}
+se() {
+	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
+	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
+	;}
 
 # Colorize commands when possible.
 alias \

@@ -60,6 +60,14 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+#define STACKKEYS(MOD,ACTION) \
+	{ MOD,	XK_j,	ACTION##stack,	{.i = INC(+1) } }, \
+	{ MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } }, \
+	{ MOD,  XK_v,   ACTION##stack,  {.i = 0 } }, \
+	/* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
+	/* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
+	/* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
+	/* { MOD, XK_x,     ACTION##stack, {.i = -1 } }, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -73,6 +81,8 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 #include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	STACKKEYS(MODKEY,                          focus)
+	STACKKEYS(MODKEY|ShiftMask,                push)
 	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_grave,	spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_grave,	spawn,		SHCMD("") }, */
@@ -134,8 +144,6 @@ static Key keys[] = {
 	/* { MODKEY,			XK_g,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_g,		spawn,		SHCMD("") }, */
 	{ MODKEY,                       XK_h,		setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_j,		focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,		focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_l,		setmfact,       {.f = +0.05} },
 	/* { MODKEY,			XK_semicolon,	spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("") }, */
@@ -150,7 +158,6 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
-	{ MODKEY,                       XK_v,		focusstack,     {.i = 0 } },
 	{ MODKEY,              		XK_b,		shiftview,      { .i = -1 } },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	{ MODKEY,              		XK_n,		shiftview,	{ .i = +1 } },

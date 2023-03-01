@@ -1,19 +1,44 @@
-/** Function to shift the current view to the left/right
- *
- * @param: "arg->i" stores the number of tags to shift right (positive value)
- *          or left (negative value)
- */
+/* Sends a window to the next/prev tag */
 void
-shiftview(const Arg *arg) {
+shifttag(const Arg *arg)
+{
 	Arg shifted;
+	shifted.ui = selmon->tagset[selmon->seltags] & ~SPTAGMASK;
 
-	if(arg->i > 0) // left circular shift
-		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
-		   | (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
 
-	else // right circular shift
-		shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
-		   | selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
+	if (arg->i > 0)	/* left circular shift */
+		shifted.ui = ((shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i))) & ~SPTAGMASK;
+	else		/* right circular shift */
+		shifted.ui = (shifted.ui >> (- arg->i) | shifted.ui << (LENGTH(tags) + arg->i)) & ~SPTAGMASK;
+	tag(&shifted);
+}
+/* Navigate to the next/prev tag */
+void
+shiftview(const Arg *arg)
+{
+	Arg shifted;
+	shifted.ui = selmon->tagset[selmon->seltags] & ~SPTAGMASK;
 
+	if (arg->i > 0) {/* left circular shift */
+		shifted.ui = (shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i));
+		shifted.ui &= ~SPTAGMASK;
+	} else {	/* right circular shift */
+		shifted.ui = (shifted.ui >> (- arg->i) | shifted.ui << (LENGTH(tags) + arg->i));
+		shifted.ui &= ~SPTAGMASK;
+	}
+	view(&shifted);
+}
+/* move the current active window to the next/prev tag and view it. More like following the window */
+void
+shiftboth(const Arg *arg)
+{
+	Arg shifted;
+	shifted.ui = selmon->tagset[selmon->seltags] & ~SPTAGMASK;
+
+	if (arg->i > 0)	/* left circular shift */
+		shifted.ui = ((shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i))) & ~SPTAGMASK;
+	else		/* right circular shift */
+		shifted.ui = ((shifted.ui >> (- arg->i) | shifted.ui << (LENGTH(tags) + arg->i))) & ~SPTAGMASK;
+	tag(&shifted);
 	view(&shifted);
 }

@@ -27,6 +27,18 @@ static char *colors[][3] = {
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"st", "-n", "yt", "-g", "120x34", "-e", "yt", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spterm",      spcmd1},
+	{"yt",		spcmd2},
+};
+
 /* tagging */
 static const char *tags[] = { "", "", "", "", "",  "", "", "", "", };
 
@@ -35,10 +47,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",	NULL,	NULL,		0,		1,	0,		0,	-1 },
-	{ TERMCLASS,	NULL,	NULL,		0,		0,	1,		0,	-1 },
-	{ NULL,		NULL,	"Event Tester",	0,		0,	0,		1,	-1 }, /* xev */
+	/* class     instance		title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",	NULL,		NULL,		0,		1,	0,		0,	-1 },
+	{ TERMCLASS,	NULL,		NULL,		0,		0,	1,		0,	-1 },
+	{ NULL,		NULL,		"Event Tester",	0,		0,	0,		1,	-1 }, /* xev */
+	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,	1,		0,      -1 },
+	{ NULL,		"yt",		NULL,		SPTAG(1),	1,	1,		0,	-1 },
 };
 
 /* layout(s) */
@@ -151,7 +165,7 @@ static const Key keys[] = {
 	/* { MODKEY,			XK_apostrophe,	spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
 	{ MODKEY,             		XK_Return,	spawn,          {.v = termcmd } },
-	/* { MODKEY|ShiftMask,		XK_Return,	spawn,		SHCMD("") }, */
+	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
 
 	/* { MODKEY,			XK_z,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
@@ -163,7 +177,7 @@ static const Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	{ MODKEY,              		XK_n,		shiftview,	{ .i = +1 } },
 	/* { MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_m,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_m,		togglescratch,	{.ui = 1} },
 	{ MODKEY|ShiftMask,             XK_m,		setlayout,      {.v = &layouts[2]} }, /* monocle */
 	{ MODKEY,                       XK_comma,  	focusmon,       {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  	tagmon,         {.i = -1 } },

@@ -55,7 +55,6 @@ A,light-git
 ,maim
 ,make
 ,man-db
-A,mps-youtube-git
 ,mpv
 A,mutt-wizard-git
 ,neofetch
@@ -83,7 +82,6 @@ A,pam-gnupg
 ,polkit
 ,poppler
 ,pulsemixer
-A,python-pafy-git
 ,python-pip
 ,python-qdarkstyle
 ,python-setuptools
@@ -130,6 +128,7 @@ A,task-spooler
 ,xwallpaper
 P,pywal
 P,neovim
+P,yewtube
 ,youtube-dl
 ,ytfzf
 ,yt-dlp

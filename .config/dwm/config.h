@@ -33,10 +33,12 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "yt", "-g", "120x34", "-e", "yt", NULL };
+const char *spcmd3[] = {"st", "-n", "qalc", "-g", "50x20", "-e", "qalc", NULL};
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"yt",		spcmd2},
+	{"qalc",	spcmd3},
 };
 
 /* tagging */
@@ -53,6 +55,7 @@ static const Rule rules[] = {
 	{ NULL,		NULL,		"Event Tester",	0,		0,	0,		1,	-1 }, /* xev */
 	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,	1,		0,      -1 },
 	{ NULL,		"yt",		NULL,		SPTAG(1),	1,	1,		0,	-1 },
+	{ NULL,		"qalc",		NULL,		SPTAG(2),	1,	1,		0,	-1 },
 };
 
 /* layout(s) */
@@ -100,7 +103,7 @@ static const Key keys[] = {
 	STACKKEYS(MODKEY|ShiftMask,                push)
 	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_grave,	spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
-	/* { MODKEY|ShiftMask,		XK_grave,	spawn,		SHCMD("") }, */
+	{ MODKEY|ShiftMask,		XK_grave,	togglescratch,	{.ui = 2} },
 	TAGKEYS(                        XK_1,		0)
 	TAGKEYS(                        XK_2,		1)
 	TAGKEYS(                        XK_3,		2)

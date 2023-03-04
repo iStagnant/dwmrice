@@ -8,3 +8,6 @@
 [submodule ".config/mpv"]
 	path = .config/mpv
 	url = https://github.com/iStagnant/mpv
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/iStagnant/nvim

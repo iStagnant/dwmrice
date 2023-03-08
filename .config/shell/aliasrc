@@ -19,7 +19,7 @@ se() {
 
 # Colorize commands when possible.
 alias \
-	ls="ls -lah --color=auto" \
+	ls="ls -lAh --color=auto" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ip="ip -color=auto"

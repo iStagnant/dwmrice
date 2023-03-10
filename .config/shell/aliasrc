@@ -35,4 +35,4 @@ alias \
 	xclip="xclip -sel clip" \
 	abook="abook --config "$XDG_CONFIG_HOME"/abook/abookrc --datafile "$XDG_DATA_HOME"/abook/addressbook" \
 	mbsync="mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc" \
-	config='git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME' \
+	config='git --git-dir=$HOME/.local/share/dotfiles --work-tree ~' \

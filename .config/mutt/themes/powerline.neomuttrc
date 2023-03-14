@@ -1,0 +1,196 @@
+# ----------------------------------------------------------------------------
+# Powerline theme for NeoMutt using NerdFonts
+# loose fork of https://github.com/sheoak/neomutt-powerline-nerdfonts
+#
+# Works best with space-chalk theme
+#
+# color syntax is: color [field to color] [text color] [background color]    #
+#                                                                            #
+# color69  - cornflower blue
+# color81  - SteelBlue1
+# color156 - GreenYellow, softer neon green
+# color160 - Red3 - a darker red - too dark
+# color207 - MediumOrchid1 - soft magenta
+# color213 - Orchid - softest magenta
+# color204 - IndianRed1 like a softer pinkish red
+# color214 - Orange1 - slightly light orange
+# color227 - LightGoldenrod1 - slightly pale yellow
+# color232 - blackest gray
+# color235 - extremely dark gray
+# color237 - dark gray
+# color241 - Grey39 - medium gray
+# color244 - Grey50 - lighter medium gray
+# color255 - Grey93 - lightest gray before write
+# ----------------------------------------------------------------------------
+
+# INDEX - the main mailbox screen
+# REF: https://neomutt.org/guide/reference.html#index-format
+# Index format will be, in the following order:
+#
+# %{%d %b}     sender's timezone short date format
+# %Z           all of the below %zc,%zs,%zt
+#   %zc        Message crypto flags "    "
+#   %zs        Message status flags "   "
+#   %zt        Message tag flags "     " and "    ﴥ "
+# %-16.16L     Sender name or email addresss (16 characters)
+# %?M?(%1M)& ? Number of hidden messages if the thread is collapsed
+# %?X?&·?     Number of attachments
+# %s           Subject of the message
+# ---------------------------------------------------------------
+# not sure how to make this work only only show star or delete: %?zt?%zt&·?
+# ---------------------------------------------------------------
+set index_format=" %{%d %b} ·%Z %-16.16L %?M?(%1M)& ? %?X?&·? %s"
+
+
+# Pager format (uses index_format) will be, in the following order:
+#
+# %T    the appropriate to_character "    ﴥ "
+# %n    Author's real name (or address if missing)
+# %zc        Message crypto flags "    "
+# Message crypto flags
+# The appropriate character from the $to_chars string
+# Subject of the message
+# Date field
+# Filename of the original message folder (think mailbox)
+# Time in Hours:Minutes
+# Number of MIME attachments
+# Progress indicator for the built-in pager (how much of the file has been displayed)
+# ----------------------------------------------------------------------------
+set pager_format="%T %n %zc%s%*  %{!%d %b · %H:%M} %?X?  %X ? %P  "
+
+
+# ---------------------------- STATUS BAR ----------------------------------- #
+#
+# REF: https://neomutt.org/guide/reference.html#status-format
+#
+# |    Symbol    |                     Description                        |
+# | ----------------------------------------------------------------------|
+# |  %f         | The full pathname of the current mailbox (folder)      |
+# | %?F? %F?    | Number of flagged messages                             |
+# |  %n         | Number of new messages in the mailbox (unread, unseen) |
+# |  %R         | Number of read messages in the mailbox                 |
+# | %?d?  %d ?  | Number of deleted messages                             |
+# | %?p?  %p?   | Number of postponed (Draft) messages                   |
+# |  %t ?%?F?   | Number of tagged messages in the mailbox               |
+# | %?V? %V ? | Currently active limit pattern, if any                 |
+# |  %S         | Current sorting mode ($sort) e.g. date recieved        |
+# ------------------------------------------------------------------------
+set status_format = "  %f  %?F? %F ?  %n   %R %?d?  %d?%?p?  %p? %?t? %t? %> %?V?  \"%V\" %M ?  %S "
+
+# ----------------------- VFOLDER LINE ------------------------------------
+# REF: https://neomutt.org/guide/reference.html#folder-format
+# folder format will be, in the following order:
+#
+# "N" if mailbox has new mail, " " (space) otherwise
+# Number of unread messages in the mailbox
+# Number of messages in the mailbox
+# Filename ("/" is appended to directory names, "@" to symbolic links and "*" to executable files)
+# ----------------------------------------------------------------------------
+set vfolder_format = " %N %?n?%3n&   ?  %8m  · %f"
+
+# ------------------ attach format -----------------------------
+# REF: https://neomutt.org/guide/reference.html#attach_format
+# attach format will be, in the following order:
+#
+# Unlink (=to delete) flag
+# Deleted flag
+# Graphic tree characters
+# Size (see formatstrings-size)
+# Major MIME type/MIME subtype
+# ----------------------------------------------------------------------------
+set attach_format = "%u%D  %T%-75.75d %?T?%&   ? %5s · %m/%M"
+
+#      not addressed to me
+#      to me
+#      group
+#      CC
+#   ﴥ   Sent by me
+#      mailing list
+set to_chars="ﴥ"
+
+# unchanged mailbox, changed, read only, attach mode
+set status_chars = " "
+
+#    	      mail is signed, & the signature is successfully verified
+#    	      mail is PGP encrypted
+#    	      mail is signed, but not verified
+#    	      mail contains a PGP public key?
+# <space>     mail has no crypto info
+ifdef crypt_chars set crypt_chars = " "
+
+# Symbols for flags
+#     	      The mail is tagged.
+#     	      The mail is flagged as important.
+#     	      The mail is marked for deletion.
+#     	      The mail has attachments marked for deletion.
+#     	      The mail has been replied to.
+#  <space>    The mail is Old (Unread but seen).
+#            The mail is New (Unread but not seen).
+#  <space>    The mail thread is Old (Unread but seen).
+#  <space>    The mail thread is New (Unread but not seen).
+#  <space>    The mail is read - %S expando.
+#  <space>    The mail is read - %Z expando.
+set flag_chars = "      "
+
+set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
+tag-transforms "replied" "↻ "  \
+               "encrytpted" "" \
+               "signed" "" \
+               "attachment" "" \
+
+# The formats must start with 'G' and the entire sequence is case sensitive.
+tag-formats "replied" "GR" \
+            "encrypted" "GE" \
+            "signed" "GS" \
+            "attachment" "GA" \
+
+# -------------------------------------------------------------------------- #
+# ------------ coloring the status bar to look like powerline -------------- #
+# -------------------------------------------------------------------------- #
+
+# default
+color status color239 color235
+
+# this is for the mailbox, first segment
+color status color237 color69  '(  [^ ]+ )' 1
+
+# flagged/tagged messages
+color status yellow   color241 '\s* [0-9]+ \s*'
+
+# unread messages
+color status color156 color240 '\s*  [0-9]+ \s*'
+
+# read messages
+color status color75  color239 '\s*  [0-9]+ \s*'
+
+# deleted messages
+color status color204 color238 '\s*  [0-9]+\s*'
+
+# postponed messages (drafts)
+color status color213 color238 '\s*  [0-9]+ \s*'
+
+# dividers for left side
+color status color69    color241    '( ).*' 1
+color status color238   color235    ' '
+
+# -------------------- Right side of status bar ----------------------
+
+# divider for the left edge of right side if search is being done
+color status color239 color235 ''
+
+# Sorting method, e.g. sorted by date (oldest to newest)
+color status color214 color239  '(  [^ ]+ )' 1
+
+# the ending quote for the search term is white
+color status  color251 color241 '(" )[0-9]+' 1
+
+# number of how many times we found the search term is green
+color status  green color241 '([0-9]+ ) ' 1
+
+# number of how many times we found the search term is green
+color status  color251 color241 '(  )' 1
+
+# number of how many times we found the search term is green
+color status  color213 color241 '("[^ ]+" )' 1
+
+# ------------------ PAGER COLORFORMATTING -------------------

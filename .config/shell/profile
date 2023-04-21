@@ -13,6 +13,10 @@ export TERMINAL="st"
 export TERMINAL_PROG="st"
 export BROWSER="firefox"
 
+# Change the default crypto/weather monitor sites.
+# export CRYPTOURL="rate.sx"
+# export WTTRURL="wttr.in"
+
 # ~/ Clean-up
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}

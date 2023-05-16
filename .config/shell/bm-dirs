@@ -10,3 +10,4 @@ mn  /mnt
 pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}
 sc  $HOME/.local/bin
 src $HOME/.local/src
+G   $HOME/Games

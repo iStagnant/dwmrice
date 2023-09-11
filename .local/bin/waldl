@@ -7,9 +7,9 @@ version="0.0.1"
 # Usage:
 # 	waldl <query>
 # if query left empty then sh_menu will be used (dmenu by default)
-# after the thumbnails are cached, sxiv would open up with the thumbnails
-# Select the wallpapers using `m` on the image. ( marking the image in sxiv )
-# press `q` to quit sxiv, the marked images would start downloading
+# after the thumbnails are cached, nsxiv would open up with the thumbnails
+# Select the wallpapers using `m` on the image. ( marking the image in nsxiv )
+# press `q` to quit nsxiv, the marked images would start downloading
 
 ####################
 ## User variables ##
@@ -19,8 +19,8 @@ version="0.0.1"
 walldir="$HOME/Pictures/wallpaper"
 # the dir used to cache thumbnails
 cachedir="$HOME/.cache/wallhaven"
-# sxiv options
-sxiv_otps=" -tfpo -z 200" # o is needed for selection
+# nsxiv options
+nsxiv_otps=" -tfpo -z 200" # o is needed for selection
 # number of pages to show in search results
 # each page contains 24 results
 max_pages=4
@@ -69,7 +69,7 @@ dep_ck () {
 		command -v $pr >/dev/null 2>&1 || sh_info "command $pr not found, install: $pr" 1
 	done
 }
-dep_ck "sxiv" "curl" "jq"
+dep_ck "nsxiv" "curl" "jq"
 
 
 # clean up command that would be called when the program exits
@@ -133,11 +133,11 @@ done | curl -Z -K -
 #sh_info "downloaded thumbnails..."
 
 ###########################
-## user selection (sxiv) ##
+## user selection (nsxiv) ##
 ###########################
 
 # extract the id's out of the thumbnail name
-image_ids="$(sxiv $sxiv_otps "$cachedir")"
+image_ids="$(nsxiv $nsxiv_otps "$cachedir")"
 [ -z "$image_ids" ] && exit
 
 #########################
@@ -157,4 +157,4 @@ do
 done | curl -K -
 
 sh_info "wallpapers downloaded in:- '$walldir'"
-sxiv $(ls -c)
+nsxiv $(ls -c)

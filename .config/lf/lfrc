@@ -82,6 +82,7 @@ map I :rename; cmd-home #at very beginning
 map A :rename; cmd-end #at very end
 map c :rename; cmd-delete-home #change file name while keeping ext
 map C :rename; cmd-end; cmd-delete-home #change file name
+map R bulk-rename
 
 map E extract
 map D delete
